@@ -16,10 +16,11 @@ namespace LikeLion3
             char grade = 'A';//문자 리터럴
             string name = "Alice";//문자열 리터럴
 
-            Console.WriteLine(hp); //출력 : 100
-            Console.WriteLine(att); //출력 : 56.7
-            Console.WriteLine(grade); //출력 : A
-            Console.WriteLine(name); //출력 : Alice
+            Console.WriteLine("캐릭터");
+            Console.WriteLine("공격력 : " +hp); //출력 : 56.7
+            Console.WriteLine("체력 : "+att); //출력 : 56.7
+            Console.WriteLine("등급 : "+grade); //출력 : A
+            Console.WriteLine("이름 : "+name); //출력 : Alice
         }
     }
 }
