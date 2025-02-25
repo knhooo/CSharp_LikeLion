@@ -182,9 +182,6 @@ namespace TodayTask1
 
             Thread.Sleep(1000);
 
-
-
-
         }
     }
 }
