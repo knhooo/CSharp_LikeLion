@@ -57,7 +57,7 @@ namespace LionSimulation
         {
             Console.Clear();
             TitleMenu();
-            Console.SetCursorPosition(25, 20);
+            Console.SetCursorPosition(28, 20);
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Enter를 눌러 시작하기");
             Console.ResetColor();
@@ -109,7 +109,7 @@ namespace LionSimulation
                     StatUI();
                     ActUI();
                     ConsoleUI();
-                    
+
                 }
             }
         }
@@ -117,14 +117,14 @@ namespace LionSimulation
         {
             PrintLion(3);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            
-            Console.SetCursorPosition(20, 2);
+
+            Console.SetCursorPosition(24, 2);
             Console.Write(" _                _   _              ");
-            Console.SetCursorPosition(20, 3);
+            Console.SetCursorPosition(24, 3);
             Console.Write("| |  () _   _    | \\_/ | _  ||  _  _ ");
-            Console.SetCursorPosition(20, 4);
+            Console.SetCursorPosition(24, 4);
             Console.Write("| |_ ||/o\\|/ \\   | \\_/ |/o\\ |/7/o\\/_|");
-            Console.SetCursorPosition(20, 5);
+            Console.SetCursorPosition(24, 5);
             Console.Write("|___|L|\\_/L_n|   |_| |_|\\_,]L|\\\\( L| ");
             Console.ResetColor();
         }
@@ -144,21 +144,22 @@ namespace LionSimulation
                 "아기 사자를 멋진 사자로 키워서 소원을 이루어주자!",
                 "게임 규칙1 : 아기 사자를 5년동안 멋쟁이 사자로 키워내는 게임입니다.",
                 "게임 규칙2 : 엔딩은 총 5가지가 있습니다.",
-                "게임 규칙3 : 행복 수치가 매우 낮아지면 슬픈 일이 생길 수 있습니다.."
+                "게임 규칙3 : 행복 수치가 낮아지면 슬픈 일이 생길 수도 있습니다.."
             };
             Console.Clear();
             for (int i = 0; i < Dialog.Length;)
             {
-                
+
                 Console.SetCursorPosition(69, 19);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("스킵 : K");
                 Console.ResetColor();
 
-                if(i < 3) PrintLion(7);
+                if (i < 3) PrintLion(7);
                 else if (i < 5) PrintLion(0);
-                else    PrintLion(5);
+                else PrintLion(5);
 
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
 
                 Console.SetCursorPosition(0, 20);
                 Console.Write("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -167,12 +168,15 @@ namespace LionSimulation
                 Console.SetCursorPosition(0, 22);
                 Console.Write("┃                                                                            ┃");
                 Console.SetCursorPosition(4, 22);
+                Console.ResetColor();
                 Console.Write(Dialog[i]);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.SetCursorPosition(0, 23);
                 Console.Write("┃                                                                            ┃");
 
                 Console.SetCursorPosition(0, 24);
                 Console.Write("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                Console.ResetColor();
 
                 if (Console.KeyAvailable)//키가 눌렸을 때 true
                 {
@@ -194,45 +198,57 @@ namespace LionSimulation
         }
         public void StatUI()
         {
-            Console.SetCursorPosition(0, 3);
-            Console.WriteLine($"체력 {lion.health}");
-            Console.SetCursorPosition(0, 4);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            for (int i=0; i<lion.health/20;i++) Console.Write("■");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.SetCursorPosition(0, 0);
+            Console.Write("┏━━━━━━━━━━━━━┓");
+            for (int i = 1; i < 19; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("┃             ┃");
+            }
+            Console.SetCursorPosition(0, 19);
+            Console.Write("┗━━━━━━━━━━━━━┛");
             Console.ResetColor();
 
-            Console.SetCursorPosition(0, 6);
+            Console.SetCursorPosition(2, 2);
+            Console.WriteLine($"체력 {lion.health}");
+            Console.SetCursorPosition(2, 3);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            for (int i = 0; i < lion.health / 20; i++) Console.Write("■");
+            Console.ResetColor();
+
+            Console.SetCursorPosition(2, 5);
             Console.WriteLine($"지능 {lion.intel}");
-            Console.SetCursorPosition(0, 7);
+            Console.SetCursorPosition(2, 6);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < lion.intel / 20; i++) Console.Write("■");
             Console.ResetColor();
 
-            Console.SetCursorPosition(0, 9);
+            Console.SetCursorPosition(2, 8);
             Console.WriteLine($"매력 {lion.attract}");
-            Console.SetCursorPosition(0, 10);
+            Console.SetCursorPosition(2, 9);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < lion.attract / 20; i++) Console.Write("■");
             Console.ResetColor();
 
-            Console.SetCursorPosition(0, 12);
+            Console.SetCursorPosition(2, 11);
             Console.WriteLine($"예술 {lion.art}");
-            Console.SetCursorPosition(0, 13);
+            Console.SetCursorPosition(2, 12);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < lion.art / 20; i++) Console.Write("■");
             Console.ResetColor();
 
 
-            Console.SetCursorPosition(0, 15);
+            Console.SetCursorPosition(2, 14);
             Console.WriteLine($"행복 {lion.happy}");
-            Console.SetCursorPosition(0, 16);
+            Console.SetCursorPosition(2, 15);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < lion.happy / 20; i++) Console.Write("■");
             Console.ResetColor();
 
-            Console.SetCursorPosition(0, 18);
+            Console.SetCursorPosition(2, 17);
             Console.WriteLine($"사회 {lion.social}");
-            Console.SetCursorPosition(0, 19);
+            Console.SetCursorPosition(2, 18);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < lion.social / 20; i++) Console.Write("■");
             Console.ResetColor();
@@ -240,28 +256,59 @@ namespace LionSimulation
 
         public void ActUI()
         {
-            ConsoleKeyInfo keyInfo;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.SetCursorPosition(66, 4);
+            Console.Write("┏━━━━━━━━━━━━━┓");
 
-            Console.SetCursorPosition(69, 3);
-            Console.WriteLine($"  {lion.name}");
-            Console.SetCursorPosition(69, 5);
+            for (int i = 0; i < 11; i++)
+            {
+                Console.SetCursorPosition(66, i + 5);
+                Console.Write("┃             ┃");
+            }
+            Console.SetCursorPosition(66, 15);
+            Console.Write("┗━━━━━━━━━━━━━┛");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.SetCursorPosition(35, 0);
+            Console.Write("┏━━━━━━━━━━━━┓");
+            Console.ResetColor();
+            Console.SetCursorPosition(39, 1);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"{lion.year}년째");
+            Console.WriteLine($" {lion.year}년째");
+            Console.ResetColor();
+            //Console.SetCursorPosition(35, 1);
+            //Console.Write("┃              ┃");
+            //Console.SetCursorPosition(35, 2);
+            //Console.Write("┃              ┃");
+            Console.SetCursorPosition(35, 2);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("┗━━━━━━━━━━━━┛");
             Console.ResetColor();
 
-            Console.SetCursorPosition(69, 7);
+            Console.SetCursorPosition(71, 6);
+            Console.WriteLine($"이  름");
+
+            Console.SetCursorPosition(71, 7);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($" {lion.name}");
+            Console.ResetColor();
+
+
+
+            Console.SetCursorPosition(71, 9);
             Console.Write("소지금 ");
-            Console.SetCursorPosition(69, 8);
+            Console.SetCursorPosition(71, 10);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write(" "+lion.money);
+            Console.Write(" " + lion.money);
             Console.ResetColor();
 
-            Console.SetCursorPosition(69, 10);
+            Console.SetCursorPosition(71, 12);
             if (lion.energy == 3)
             {
                 Console.Write("행동력 ");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition(69, 11);
+                Console.SetCursorPosition(71, 13);
                 Console.WriteLine("♥♥♥");
                 Console.ResetColor();
             }
@@ -269,7 +316,7 @@ namespace LionSimulation
             {
                 Console.Write("행동력 ");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition(69, 11);
+                Console.SetCursorPosition(71, 13);
                 Console.WriteLine("♥♥");
                 Console.ResetColor();
             }
@@ -278,21 +325,11 @@ namespace LionSimulation
             {
                 Console.Write("행동력 ");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition(69, 11);
+                Console.SetCursorPosition(71, 13);
                 Console.WriteLine("♥");
                 Console.ResetColor();
             }
 
-            //Console.SetCursorPosition(67, 7);
-            //Console.WriteLine($"1. 교육");
-            //Console.SetCursorPosition(67, 9);
-            //Console.WriteLine($"2. 알바");
-            //Console.SetCursorPosition(67, 11);
-            //Console.WriteLine($"3. 여가");
-            //Console.SetCursorPosition(67, 13);
-            //Console.WriteLine($"4. 상점");
-            //Console.SetCursorPosition(67, 15);
-            //Console.WriteLine($"5. 종료");
         }
         public void GameOver()
         {
@@ -333,12 +370,12 @@ namespace LionSimulation
             }
             else if (score > 400)
             {
-                PrintLion(1);
+                PrintLion(8);
                 PrintLine("약속한 시간이 되었습니다", lion.name + "(이)는 좋은 사자가 되었습니다!!");
             }
             else if (score > 300)
             {
-                PrintLion(1);
+                PrintLion(8);
                 PrintLine("약속한 시간이 지났습니다.", lion.name + "(이)는 평범한 사자가 되었습니다!!");
             }
 
@@ -360,18 +397,20 @@ namespace LionSimulation
         }
 
         public int KeyInput()
-        {  
+        {
             return _getch(); //아스키값 왼쪽 오른쪽
         }
 
-        public void SetMoney(int _money)
+        public bool SetMoney(int _money)
         {
             if (lion.money + _money < 0)
             {
                 PrintLine("소지금이 부족합니다.", "");
                 lion.energy++;//에너지 반환
+                return false;
             }
             lion.money += _money;
+            return true;
         }
 
         public void SetStat(int _stat, int _num)
@@ -403,7 +442,8 @@ namespace LionSimulation
         }
         public void SetHappy(int _num)
         {
-            lion.happy += _num;
+            if (lion.happy + _num > 100) lion.happy = 100;
+            else lion.happy += _num;
             if (lion.happy < 0)
             {
                 GameOver();
@@ -426,31 +466,57 @@ namespace LionSimulation
                     Console.Clear();
                     StatUI();
                     ActUI();
-                    if(lion.year == 1) PrintLion(5);
+                    if (lion.year == 1) PrintLion(5);
                     else PrintLion(2);
                     switch (pressKey)
                     {
                         case 49://1. 태권도학원
-                            SetMoney(-10); SetStat(1, 10);
-                            PrintLine(lion.name + "(이)가 열심히 태권도를 합니다.", "체력 10 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(1, 10);
+                                PrintLine(lion.name + "(이)가 열심히 태권도를 합니다.", "체력 10 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 50://2. 독서실
-                            SetMoney(-10); SetStat(2, 10);
-                            PrintLine(lion.name + "(이)가 열심히 공부를 합니다.", "지능 10 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(2, 10);
+                                PrintLine(lion.name + "(이)가 열심히 공부를 합니다.", "지능 10 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 51://3. 모델 학원
-                            SetMoney(-10); SetStat(3, 10);
-                            PrintLine(lion.name + "(이)가 열심히 모델 수업을 듣습니다.", "매력 10 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(3, 10);
+                                PrintLine(lion.name + "(이)가 열심히 모델 수업을 듣습니다.", "매력 10 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 52://4. 미술 학원
-                            SetMoney(-10); SetStat(4, 10);
-                            PrintLine(lion.name + "(이)가 열심히 그림을 합니다.", "예술 10 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(4, 10);
+                                PrintLine(lion.name + "(이)가 열심히 그림을 합니다.", "예술 10 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 53://5. 발표 학원
-                            SetMoney(-10); SetStat(5, 10);
-                            PrintLine(lion.name + "(이)가 열심히 발표를 합니다.", "사회 10 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(5, 10);
+                                PrintLine(lion.name + "(이)가 열심히 발표를 합니다.", "사회 10 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 48://0. 뒤로가기
+                            lion.energy++;
                             break;
                         default:
                             continue;
@@ -523,6 +589,7 @@ namespace LionSimulation
                             PrintLine(lion.name + "(이)가 열심히 일하고 돌아왔습니다.", "소지금 +" + rnd + " 지능 +10");
                             break;
                         case 48://0. 뒤로가기
+                            lion.energy++;
                             break;
                         default:
                             continue;
@@ -531,7 +598,7 @@ namespace LionSimulation
                     if (lion.energy == 0)
                     {
                         lion.year++;
-                        if (lion.year > 3)
+                        if (lion.year > 5)
                         {
                             Thread.Sleep(1000);
                             Ending();
@@ -563,15 +630,20 @@ namespace LionSimulation
                     Console.Clear();
                     StatUI();
                     ActUI();
-                    if(lion.year == 1) PrintLion(5);
+                    if (lion.year == 1) PrintLion(5);
                     else PrintLion(2);
                     switch (pressKey)
                     {
                         case 49://1. 게임
                             rnd = rand.Next(5, 16);
-                            SetMoney(-10); SetHappy(rnd);
-                            PrintLine(lion.name + "(이)가 피시방에서 게임을 즐기고 왔습니다.", "행복" + rnd + " 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetHappy(rnd);
+                                PrintLine(lion.name + "(이)가 피시방에서 게임을 즐기고 왔습니다.", "행복" + rnd + " 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 50://2. 스포츠
                             rnd = rand.Next(5, 16);
                             SetMoney(0); SetStat(4, 10); SetHappy(rnd);
@@ -579,20 +651,36 @@ namespace LionSimulation
                             break;
                         case 51://3. 영화
                             rnd = rand.Next(15, 26);
-                            SetMoney(-10); SetStat(1, 10); SetHappy(rnd);
-                            PrintLine(lion.name + "(이)가 영화를 보고왔습니다.", "행복" + rnd + " 증가!");
-                            break;
+                            if (SetMoney(-10))
+                            {
+                                SetStat(1, 10); SetHappy(rnd);
+                                PrintLine(lion.name + "(이)가 영화를 보고왔습니다.", "행복" + rnd + " 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 52://4. 모임
                             rnd = rand.Next(5, 16);
-                            SetMoney(-20); SetStat(3, 10); SetHappy(rnd);
-                            PrintLine(lion.name + "(이)가 친구들과 맛집에 다녀왔습니다.", "행복 +" + rnd + " 사회 +10");
-                            break;
+                            if (SetMoney(-20))
+                            {
+                                SetStat(3, 10); SetHappy(rnd);
+                                PrintLine(lion.name + "(이)가 친구들과 맛집에 다녀왔습니다.", "행복 +" + rnd + " 사회 +10");
+                                break;
+                            }
+                            else
+                                break;
                         case 53://5. 여행
                             rnd = rand.Next(25, 36);
-                            SetMoney(-30); SetHappy(rnd);
-                            PrintLine(lion.name + "(이)가 여행을 다녀왔습니다.", "행복" + rnd + " 증가!");
-                            break;
+                            if (SetMoney(-30))
+                            {
+                                SetHappy(rnd);
+                                PrintLine(lion.name + "(이)가 여행을 다녀왔습니다.", "행복" + rnd + " 증가!");
+                                break;
+                            }
+                            else
+                                break;
                         case 48://0. 뒤로가기
+                            lion.energy++;
                             break;
                         default:
                             continue;
@@ -601,7 +689,7 @@ namespace LionSimulation
                     if (lion.energy == 0)
                     {
                         lion.year++;
-                        if (lion.year > 3)
+                        if (lion.year > 5)
                         {
                             Thread.Sleep(1000);
                             Ending();
@@ -621,7 +709,7 @@ namespace LionSimulation
             ActUI();
             if (lion.year == 1) PrintLion(0);
             else PrintLion(1);
-            PrintLine("상점에서 무엇을 살까? (가격: 50)(0:뒤로가기) 1.단백질 보충제(체력+)", " 2. 교과서(지능+)  3.옷(매력+) 4.로봇 팔(예술+) 5.디저트(행복+)");
+            PrintLine("상점에서 무엇을 살까? (가격: 50)(0:뒤로가기)", " 1.프로틴(체력) 2.교과서(지능)  3.옷(매력) 4.로봇 팔(예술) 5.디저트(행복)");
             int rnd;
             int pressKey;//정수형 초기 선언 
             while (true)
@@ -638,26 +726,52 @@ namespace LionSimulation
                     switch (pressKey)
                     {
                         case 49://1. 단백질
-                            SetMoney(-50); SetStat(1, 50);
-                            PrintLine(lion.name + "(이)가 단백질 보충을 합니다.", "체력 50 증가!!");
-                            break;
+                            if (SetMoney(-50))
+                            {
+                                SetStat(1, 50);
+                                PrintLine(lion.name + "(이)가 단백질 보충을 합니다.", "체력 50 증가!!");
+                                break;
+                            }
+                            else
+                                break;
                         case 50://2. 교과서
-                            SetMoney(-50); SetStat(2, 50);
-                            PrintLine(lion.name + "(이)가 새 교과서로 공부합니다.", "지능 50 증가!!");
-                            break;
+                            if (SetMoney(-50))
+                            {
+                                SetStat(2, 50);
+                                PrintLine(lion.name + "(이)가 새 교과서로 공부합니다.", "지능 50 증가!!");
+                                break;
+                            }
+                            else
+                                break;
                         case 51://3. 옷
-                            SetMoney(-50); SetStat(3, 50);
-                            PrintLine(lion.name + "(이)가 새 옷으로 갈아입습니다.", "매력 50 증가!!");
-                            break;
+                            if (SetMoney(-50))
+                            {
+                                SetStat(3, 50);
+                                PrintLine(lion.name + "(이)가 새 옷으로 갈아입습니다.", "매력 50 증가!!");
+                                break;
+                            }
+                            else
+                                break;
                         case 52://4. 로봇 팔
-                            SetMoney(-50); SetStat(4, 50);
-                            PrintLine(lion.name + "(이)가 정교한 로봇 팔을 장착합니다.", "예술 50 증가!!");
-                            break;
+                            if (SetMoney(-50))
+                            {
+                                SetStat(4, 50);
+                                PrintLine(lion.name + "(이)가 정교한 로봇 팔을 장착합니다.", "예술 50 증가!!");
+                                break;
+                            }
+                            else
+                                break;
                         case 53://5. 디저트
-                            SetMoney(-50); SetHappy(50);
-                            PrintLine(lion.name + "(이)가 맛있는 디저트를 먹습니다.", "행복 50 증가!!");
-                            break;
+                            if (SetMoney(-50))
+                            {
+                                SetHappy(50);
+                                PrintLine(lion.name + "(이)가 맛있는 디저트를 먹습니다.", "행복 50 증가!!");
+                                break;
+                            }
+                            else
+                                break;
                         case 48://0. 뒤로가기
+                            lion.energy++;
                             break;
                         default:
                             continue;
@@ -666,7 +780,7 @@ namespace LionSimulation
                     if (lion.energy == 0)
                     {
                         lion.year++;
-                        if (lion.year > 3)
+                        if (lion.year > 5)
                         {
                             Thread.Sleep(1000);
                             Ending();
@@ -686,7 +800,9 @@ namespace LionSimulation
             PrintLion(0);
             Console.SetCursorPosition(20, 18);
             Console.CursorVisible = true;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("아기 사자의 이름을 지어주세요");
+            Console.ResetColor();
             Console.SetCursorPosition(30, 21);
             lion.name = Console.ReadLine();
             Console.CursorVisible = false;
@@ -696,130 +812,145 @@ namespace LionSimulation
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             if (n == 1)//사자
             {
-                Console.SetCursorPosition(20, 7);
+                Console.SetCursorPosition(24, 7);
                 Console.Write("(\"`-''-/\").___..--''\"`-._ ");
-                Console.SetCursorPosition(20, 8);
+                Console.SetCursorPosition(24, 8);
                 Console.Write(" `6_ 6  )   `-.  (     ).`-.__.`) ");
-                Console.SetCursorPosition(20, 9);
+                Console.SetCursorPosition(24, 9);
                 Console.Write(" (_Y_.)'  ._   )  `._ `. ``-..-'");
-                Console.SetCursorPosition(20, 10);
+                Console.SetCursorPosition(24, 10);
                 Console.Write("   _..`--'_..-_/  /--'_.'");
-                Console.SetCursorPosition(20, 11);
+                Console.SetCursorPosition(24, 11);
                 Console.Write("  ((((.-''  ((((.'  (((.");
             }
             else if (n == 2)//활동
             {
-                Console.SetCursorPosition(10, 7);
+                Console.SetCursorPosition(16, 7);
                 Console.Write("                __..--''``---....___   _..._ __");
-                Console.SetCursorPosition(10, 8);
-                Console.Write(" /// //_.-'    .-/\";  `        ``<._  ``.''_ `. / // /");
-                Console.SetCursorPosition(10, 9);
-                Console.Write("///_.-' _..--.'_    \\                    `( ) ) // //");
-                Console.SetCursorPosition(10, 10);
-                Console.Write("/ (_..-' // (< _     ;_..__               ; `' / ///");
-                Console.SetCursorPosition(10, 11);
-                Console.Write(" / // // //  `-._,_)' // / ``--...____..-' /// / //");
+                Console.SetCursorPosition(16, 8);
+                Console.Write(" /// //_.-'    .-/\";  `        ``<._  ``.''_ `. / ");
+                Console.SetCursorPosition(16, 9);
+                Console.Write("///_.-' _..--.'_    \\                    `( ) ) / ");
+                Console.SetCursorPosition(16, 10);
+                Console.Write("/ (_..-' // (< _     ;_..__               ; `' / /");
+                Console.SetCursorPosition(16, 11);
+                Console.Write(" / // // //  `-._,_)' // / ``--...____..-' /// / ");
             }
             else if (n == 3)//멋쟁이사자
             {
-                Console.SetCursorPosition(18, 7);
+                Console.SetCursorPosition(24, 7);
                 Console.Write("      /\";;:;;\"\\");
-                Console.SetCursorPosition(18, 8);
+                Console.SetCursorPosition(24, 8);
                 Console.Write("    (:;/\\,-,/\\; ;)");
-                Console.SetCursorPosition(18, 9);
+                Console.SetCursorPosition(24, 9);
                 Console.Write("   (:;");
-                Console.SetCursorPosition(18, 10);
+                Console.SetCursorPosition(24, 10);
                 Console.Write("   (:;{  d b  }:;)");
-                Console.SetCursorPosition(18, 11);
+                Console.SetCursorPosition(24, 11);
                 Console.Write("    (:;\\__Y__ /; ;)-----------,,_");
-                Console.SetCursorPosition(18, 12);
+                Console.SetCursorPosition(24, 12);
                 Console.Write("     ,..\\  ,..\\      ___ / ___)__`\\");
-                Console.SetCursorPosition(18, 13);
+                Console.SetCursorPosition(24, 13);
                 Console.Write("      (,,,)~(,,,)`-._##____________)");
             }
             else if (n == 4) //망한사자
             {
-                Console.SetCursorPosition(15, 7);
+                Console.SetCursorPosition(24, 7);
                 Console.Write("       sSSSs");
-                Console.SetCursorPosition(15, 8);
+                Console.SetCursorPosition(24, 8);
                 Console.Write("      s(oo)s");
-                Console.SetCursorPosition(15, 9);
+                Console.SetCursorPosition(24, 9);
                 Console.Write("      s(Y)Ss'._");
-                Console.SetCursorPosition(15, 10);
+                Console.SetCursorPosition(24, 10);
                 Console.Write("        |\\,    \"._");
-                Console.SetCursorPosition(15, 11);
+                Console.SetCursorPosition(24, 11);
                 Console.Write("       / /| / ___  \\");
-                Console.SetCursorPosition(15, 12);
+                Console.SetCursorPosition(24, 12);
                 Console.Write("        cc-'cc'cc -,-__)");
             }
             else if (n == 0)//아기사자
             {
-                Console.SetCursorPosition(20, 7);
+                Console.SetCursorPosition(26, 7);
                 Console.Write("    .       .");
-                Console.SetCursorPosition(20, 8);
+                Console.SetCursorPosition(26, 8);
                 Console.Write("    \\`-\"'\" - '/");
-                Console.SetCursorPosition(20, 9);
+                Console.SetCursorPosition(26, 9);
                 Console.Write("     } 6 6 {  ");
-                Console.SetCursorPosition(20, 10);
+                Console.SetCursorPosition(26, 10);
                 Console.Write("    =.  Y  ,=");
-                Console.SetCursorPosition(20, 11);
+                Console.SetCursorPosition(26, 11);
                 Console.Write("      /^^^\\  .");
-                Console.SetCursorPosition(20, 12);
+                Console.SetCursorPosition(26, 12);
                 Console.Write("     /     \\  ) )");
-                Console.SetCursorPosition(20, 13);
+                Console.SetCursorPosition(26, 13);
                 Console.Write("    (  )-(  )/ ");
-                Console.SetCursorPosition(20, 14);
+                Console.SetCursorPosition(26, 14);
                 Console.Write("     \"\"   \"\"");
             }
             else if (n == 5)
             {
-                Console.SetCursorPosition(20, 7);
+                Console.SetCursorPosition(26, 7);
                 Console.Write("     .       .");
-                Console.SetCursorPosition(20, 8);
+                Console.SetCursorPosition(26, 8);
                 Console.Write("     \\`-\"'\"-'/");
-                Console.SetCursorPosition(20, 9);
+                Console.SetCursorPosition(26, 9);
                 Console.Write("      } 6 6 {");
-                Console.SetCursorPosition(20, 10);
+                Console.SetCursorPosition(26, 10);
                 Console.Write("     =.  Y  ,=");
-                Console.SetCursorPosition(20, 11);
+                Console.SetCursorPosition(26, 11);
                 Console.Write("   (\"\"-'***`-\"\")");
-                Console.SetCursorPosition(20, 12);
+                Console.SetCursorPosition(26, 12);
                 Console.Write("    `-/     \\-' ");
-                Console.SetCursorPosition(20, 13);
+                Console.SetCursorPosition(26, 13);
                 Console.Write("     (  )-(  )==='");
-                Console.SetCursorPosition(20, 14);
+                Console.SetCursorPosition(26, 14);
                 Console.Write("     \"\"   \"\"");
             }
             else if (n == 7)//박스냥이
             {
-                Console.SetCursorPosition(15, 7);
+                Console.SetCursorPosition(20, 7);
                 Console.Write("  ,-.       _,---._ __  / \\");
-                Console.SetCursorPosition(15, 8);
+                Console.SetCursorPosition(20, 8);
                 Console.Write(" /  )    .-'       `./ /   \\");
-                Console.SetCursorPosition(15, 9);
+                Console.SetCursorPosition(20, 9);
                 Console.Write("(  (   ,'            `/    /|");
-                Console.SetCursorPosition(15, 10);
+                Console.SetCursorPosition(20, 10);
                 Console.Write(" \\  `-\"             \\'\\   / |");
-                Console.SetCursorPosition(15, 11);
+                Console.SetCursorPosition(20, 11);
                 Console.Write("  `.              ,  \\ \\ /  |");
-                Console.SetCursorPosition(15, 12);
+                Console.SetCursorPosition(20, 12);
                 Console.Write("   /`.          ,'-`----Y   |");
-                Console.SetCursorPosition(15, 13);
+                Console.SetCursorPosition(20, 13);
                 Console.Write("  (            ;        |   '");
-                Console.SetCursorPosition(15, 14);
+                Console.SetCursorPosition(20, 14);
                 Console.Write("  |  ,-.    ,-'         |  /");
-                Console.SetCursorPosition(15, 15);
+                Console.SetCursorPosition(20, 15);
                 Console.Write("  |  | (   |            | /");
-                Console.SetCursorPosition(15, 16);
+                Console.SetCursorPosition(20, 16);
                 Console.Write("  )  |  \\  `.___________|/");
-                Console.SetCursorPosition(15, 17);
+                Console.SetCursorPosition(20, 17);
                 Console.Write("  `--'   `--'");
             }
-
+            else if (n == 8)
+            {
+                Console.SetCursorPosition(24, 7);
+                Console.Write("                  /)-._");
+                Console.SetCursorPosition(24, 8);
+                Console.Write("                 Y. ' _]");
+                Console.SetCursorPosition(24, 9);
+                Console.Write("          ,.._   |`--\"=");
+                Console.SetCursorPosition(24, 10);
+                Console.Write("         /    \"-/   \\");
+                Console.SetCursorPosition(24, 11);
+                Console.Write("/)      |   |_     `\\|___");
+                Console.SetCursorPosition(24, 12);
+                Console.Write("\\:::::::\\___/_\\__\\_______\\");
+            }
             Console.ResetColor();
         }
         public void PrintLine(string str1, string str2)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.SetCursorPosition(2, 20);
             Console.Write("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 
@@ -827,8 +958,10 @@ namespace LionSimulation
             Console.Write("┃                                                                            ┃");
 
             Console.SetCursorPosition(6, 21);
-            Console.WriteLine(str1);
+            Console.ResetColor();
 
+            Console.WriteLine(str1);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.SetCursorPosition(2, 22);
             Console.Write("┃                                                                            ┃");
 
@@ -841,8 +974,9 @@ namespace LionSimulation
             Console.SetCursorPosition(2, 24);
             Console.Write("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             Thread.Sleep(500);
-            Console.SetCursorPosition(6, 22);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.ResetColor();
+            Console.SetCursorPosition(6, 23);
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine(str2);
             Console.ResetColor();
         }
@@ -867,9 +1001,6 @@ namespace LionSimulation
             Console.Clear();
             printer.PrintLine("게임 오버", lion.name + "(이)가 집을 떠났습니다..");
         }
-
     }
-
-
 }
 
